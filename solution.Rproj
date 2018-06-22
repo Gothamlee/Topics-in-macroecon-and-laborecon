@@ -1,0 +1,74 @@
+---
+title: 'Topics in macroecon'
+author: "LIXINYU|180e203e"
+date: '`r format(Sys.time(), "%d %m, %Y")`'
+output: pdf_document
+---
+
+```{r}
+library("tidyverse")
+mpg
+ggplot(data=mpg)+geom_point(mapping = aes(x=displ,y=hwy))
+```
+
+#3.2.4 Excersice problem#
+```{r, message=FALSE}
+ggplot(data = mpg)
+nrow(mpg)
+ncol(mpg)
+?mpg
+mpg
+ggplot(data =mpg)+ geom_point(mapping = aes(x= cyl, y=hwy))
+
+```
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+#3.7&3.8#
+```{r}
+ggplot(data= diamonds)+ geom_bar(mapping = aes(x= cut))
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, colour = cut))
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = cut))
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
+```
+#5#
+```{r}
+install.packages("nycflights13")
+library(nycflights13)
+library(tidyverse)
+nycflights13::flights
+filter(flights, month == 1, day == 1)
+jan1 <- filter(flights, month == 1, day == 1)
+```
+#5.2.4 Excercise#
+```{r}
+filter(flights, arr_delay >= 120, dep_delay >= 120)
+```
+#11 Data import#
+```{r}
+library(tidyverse)
+heights <- read_csv("C:/Users/Administrator/Desktop/Topics-in-macroecon-and-labor-econ/solution/heights.csv")
+
+read_csv("The first line of metadata
+  The second line of metadata
+  x,y,z
+  1,2,3", skip = 2)
+read_csv("# A comment I want to skip
+  x,y,z
+  1,2,3", comment = "#")
+read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
+read_csv("a,b,c\n1,2,.", na = ".")
+```
+#11.2.2 Excercise#
+```{r}
+#The first three of questions, they all got a problem with Value of column names should be indentical to variable names, the fouth one is wrong with confliction on column name and Variable name, the fifth one is not supposed to use $read.csv$ function, it should be $read_tsv$ function #
+```
+
+
